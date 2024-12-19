@@ -1,5 +1,3 @@
-# Power BI 
-
 In this article : 
 - [Power BI](#power-bi)
   - [Upload the report on PowerBI](#upload-the-report-on-powerbi)
@@ -11,6 +9,8 @@ In this article :
 - [Power App](#power-app)
   - [Link the report to the App](#link-the-report-to-the-app)
   - [Approve App connections](#approve-app-connections)
+
+# Power BI 
 
 ## Upload the report on PowerBI
 - Download the [Request Analyzer template](/Sources/RequestAnalyzer-V1.21.pbit)

@@ -1,5 +1,3 @@
-# Pre-requisites
-
 In this article : 
 - [Pre-requisites](#pre-requisites)
   - [Platform](#platform)
@@ -11,6 +9,8 @@ In this article :
     - [About installing inside the CoE Starter Kit environment](#about-installing-inside-the-coe-starter-kit-environment)
   - [Power BI Workspace](#power-bi-workspace)
 - [Let's Start](#lets-start)
+
+# Pre-requisites
 
 ## Platform
 

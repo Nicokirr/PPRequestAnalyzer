@@ -1,5 +1,3 @@
-# Deploy the PP solution
-
 In this article : 
 - [Deploy the PP solution](#deploy-the-pp-solution)
   - [Import Solution](#import-solution)
@@ -13,6 +11,7 @@ In this article :
   - [Runs \& downloads](#runs--downloads)
 - [Solution Import Completed](#solution-import-completed)
 
+# Deploy the PP solution
 
 ## Import Solution
 

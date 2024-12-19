@@ -1,5 +1,3 @@
-# Troubleshooting
-
 In this article : 
 - [Troubleshooting](#troubleshooting)
   - [Understand Issue's scope](#understand-issues-scope)
@@ -14,6 +12,8 @@ In this article :
   - [4-User's licenses](#4-users-licenses)
 - [Solving Most common issues](#solving-most-common-issues)
   - [Misconfiguration of Connections](#misconfiguration-of-connections)
+
+# Troubleshooting
 
 ## Understand Issue's scope
 
