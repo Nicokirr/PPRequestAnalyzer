@@ -4,8 +4,7 @@ In this article :
 - [Configure Environment Variables](#configure-environment-variables)
   - [SharePoint directories](#sharepoint-directories)
   - [Dataverse connection](#dataverse-connection)
-  - [Configuration of Daily data collection](#configuration-of-daily-data-collection)
-  - [Configuration of Full data collection](#configuration-of-full-data-collection)
+  - [Data collection](#data-collection)
 - [Checking import results](#checking-import-results)
   - [Status \& connections](#status--connections)
   - [Runs \& downloads](#runs--downloads)
@@ -15,7 +14,7 @@ In this article :
 
 ## Import Solution
 
-Download the latest version of the solution, and import it in the chosen host environment.
+[Download the latest version](/Packages/RequestAnalyzer_2_0_0_2_managed.zip) of the solution, and import it in the chosen host environment.
 
 ![Install-ImportSolution](/Docs/Images/Install-ImportSolution.png)
 
@@ -30,11 +29,15 @@ Create the first connection for the licensing API using this URL "https://licens
 
 ![Install-Connections2](/Docs/Images/Install-Connections-2.png)
 
-**DO NOT REUSE** this connection for the *Graph API* 
+![Install-Connections3](/Docs/Images/warning.png)
 
-![Install-Connections3](/Docs/Images/Install-Connections-3.png)
+Be carefull , this step is where most frequent configuration error happen.
+
+You **MUST NOT REUSE** the http licensing connection for the *Graph API* graph API connection. 
 
 Instead, create a new connection with this URL: "https://graph.microsoft.com" in both fields.
+
+![Install-Connections3](/Docs/Images/Install-Connections-3.png)
 
 # Configure Environment Variables
 
@@ -44,7 +47,14 @@ After definining the connections, you need to configure the environment variable
 
 ## SharePoint directories
 
-There are multiple reports to download. This tool is designed to have one folder for each report type. There is one variable to define the SharePoint root URL, and then relative URLs for each folder : 
+There are multiple reports to download. This tool is designed to have one folder for each report type. 
+These directories where created in the prepare phase. If you missed it, go back to [Prepare Sharepoint Directories](#prepare-sharepoint-directories)
+
+There is one variable to define the SharePoint root URL, and then relative URLs for each folder. 
+![Install-Connections3](/Docs/Images/warning.png)
+
+This step is the 2nd  most frequent place for configuration error. 
+Be **BE CAREFULL** with the "/" that should obe included at the begining of **ALL** relative URLs. Look at examples to see what is expected : 
 - *RA-SP_site URL* : root URL of the SharePoint Site  (ex : https://xxxxxx.sharepoint.com/sites/RequestAnalyzer)
 - *RA-SP_Folder-LicensedUser* : relative URL of the directory to host the reports for "licensed users"
 - *RA-SP_Folder-NonLicensedUser* : relative URL of the directory to host the reports for "non-licensed users"
@@ -57,35 +67,16 @@ There are multiple reports to download. This tool is designed to have one folder
 
 This tool uses CoE Starter Kit data to provide details about a specific user. As it can be installed in any environment, you need to select the environment hosting the CoE Starter Kit in the variable *RA-DataverseWithCoE*.
 
-## Configuration of Daily data collection
+> **IF** you made the choice to not use the CoE Starter Kit database, you can point to any other Dataverse where users have read access to the table *Microsoft Entra IDs*. This will allow to display user names even if the usage data will be missing
 
-Collecting telemetry takes time. You can only request for usage data of a period in the past (no live collection). And the more active users on the tenant, the more you need to wait before requesting the report. This tool is designed to request, every morning, usage data for a single day in the past. 
+## Data collection
+All these parameters have default values that should fit most tenants. 
+You may want to see how to adjust them if :
+- you have a very large tenant (>100k active users) as the size brings challenges to collect efficiently the data.
+- you want to optimize data collection for your tenant size. (can reduce run time and get latest data earlier)
+- you are curious and want to understand how this works
 
-| Variable Name | Unit | Default Value | Description |
-| --- | --- | --- | ------------ |
-| RA-DelayForTelemetryHarvesting | Days | 4 | This is the delay in days between the runtime moment and the data to download |
-
-Here is how it behaves with default value, assuming we are the 6th of December.
-
-![RA-DelayForTelemetryHarvesting-equals-4](/Docs/Images/DelayForTelemetryHarvesting-4.png)
-
-If you have a small tenant, you can reduce this value up to 0 to have more recent data.
-
-![RA-DelayForTelemetryHarvesting-equals-0](/Docs/Images/DelayForTelemetryHarvesting-0.png)
-
-## Configuration of Full data collection
-
-Nobody likes to wait. So the tool is designed to request as much data as possible at the time of the installation (only once). This is quite intensive in terms of request, and again the time needed by PPAC to respond depends on the activity on the tenant. So there are few parameters to adjust these waiting times
-
-| Variable Name | Unit | Default Value | Description |
-| --- | --- | --- | ------------ |
-| RA-CollectAllDaysAtNextRun | Boolean | True | If true, forces a full data load, on all possible days. This full load will then set this parameter to false to ensure it happens only once. | 
-| RA-NumberOfDaysToCollect | Days | 40 | This is the number of days to collect when running a full data load. |
-RA-DelayBetweenRequests | Seconds | 240 | Delay to wait after sending all report requests for a specific day, before sending requests for the next day. Typically less than a minute for small tenants, but can require several minutes if not more for large tenants. |
-
-![Full data collection sequence](/Docs/Images/UnderstandingFullLoadSequence.png)
-
-After defining the environment variable values, you can import the solution (~ 2 minutes to complete).
+In this case, go to [Configure Data Collection Parameters](Install-DataLoadConf.md)
 
 # Checking import results
 

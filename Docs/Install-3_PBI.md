@@ -13,7 +13,7 @@ In this article :
 # Power BI 
 
 ## Upload the report on PowerBI
-- Download the [Request Analyzer template](/Sources/RequestAnalyzer-V1.21.pbit)
+- Download the [Request Analyzer report](/Packages/RequestAnalyzer-V2.pbix)
 
 - Go to [Power BI](https://app.powerbi.com), and navigate to the workspace you have chosen in the prepare steps.
 - Upload the report
