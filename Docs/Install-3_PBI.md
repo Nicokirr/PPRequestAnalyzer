@@ -26,9 +26,13 @@ Open the settings of the semantic model
 
 ### Configure parameters
 
-Go to the parameters.
+Go to the parameter.
 
-Fill all SharePoint parameters with the same values as the ones defined in [Step 2](/Docs/Install-2_Solution.md).
+> **WARNING** : Don't define credentials yet, parameters need to be properly set before.
+
+Fill all SharePoint parameters with the same values as the ones defined in [Solution Install : Configure ](/Docs/Install-2_Solution.md#sharepoint-directories).
+
+>**WARNING** : Some values are already defined, but you need to **replace** them with your values
 
 ![Semantic Settings](/Docs/Images/Install-PBI-SemanticParameters.png)
 
@@ -36,7 +40,9 @@ The last parameter is the Dataverse URL. Use the one of the CoE Starter Kit. If 
 
 ![Dataverse URL](/Docs/Images/Install-DataverseURL.png)
 
-> DO NOT FORGET to click on APPLY, otherwise you will loose this configuration
+![Install-Connections3](/Docs/Images/warning.png)
+
+> **WARNING** :  DO NOT FORGET to click on APPLY, otherwise you will loose this configuration and the next step to setup credentials will fail.
 
 ### Configure credentials
 
@@ -44,12 +50,14 @@ Go to Data source credentials and define them for the 4 data sources :
 
 ![Credentials Dataverse](/Docs/Images/Install-PBI-Credentials-DV.png)
 
-- CommonDataService : Dataverse used by the CoE Starter Kit.
-- SharePoint : the website hosting the downloaded CSV reports.
-- Web : this first web source is Microsoft Official Github documentation. No authentication is required (Anonymous access)
-- Web : This is again the CoE Starter Kit database. As the standard connector does not provide access to the system users, a dedicated datasource is required. 
+| Data Source | Description | Authentication method | Privacy level (recommendation) |
+| --- | --- | --- | --- |
+| CommonDataService |  Dataverse used by the CoE Starter Kit | OAuth2 | Private |
+| SharePoint | The website hosting the downloaded CSV reports | OAuth2 | Private |
+| Web | This first web source is Microsoft Official Github documentation. | Anonymous | Public | 
+| Web | This is again the CoE Starter Kit database. As the standard connector does not provide access to the system users, a dedicated datasource is required. | OAuth2 | Private |
 
-Once all credentials are provided, there should be no remaining error or warning messages in this section.
+Once all credentials are provided, there should be no remaining error nor warning messages in this section.
 
 ![Credentials Dataverse](/Docs/Images/Install-PBI-Credentials-Valid.png)
 
@@ -70,7 +78,7 @@ Navigate back to the workspace (1) and check that the data refresh is completed 
 > It is likely that the full data load is not completed yet, so you will have partial data only, but this does not prevent from finalizing the configuration.
 
 Now open the report and check that data displayed matches your tenant (Check that dates and quantities make sense in your context) 
-You can refer to the below picture that displays default data included in the report(Yours should be different). Otherwise, refere to the [Troubleshooting](Install-4_Troubleshooting.md) page.
+You can refer to the below picture that displays default data included in the report(Yours should be different). Otherwise, refere to the [Troubleshooting](/Docs/Install-4_Troubleshouting.md) page.
 
 # Power App
 
