@@ -9,6 +9,7 @@ In this article :
 - [Power App](#power-app)
   - [Link the report to the App](#link-the-report-to-the-app)
   - [Approve App connections](#approve-app-connections)
+- [Check data refresh](#check-data-refresh)
 
 # Power BI 
 
@@ -126,6 +127,21 @@ The last step is to approve connections used by the app :
 
 ![Define Connections](/Docs/Images/Install-PBI-DefineConnections.png)
 
-Once approved, you are done with the installation. The screen should look like this (of course with your own data).
+Once approved, you are done with the installation. The detail tab should look like this.
 
 ![PBI install end](/Docs/Images/Install-PBI-End1.png)
+
+# Check data refresh
+
+The report is loaded with Sample data, you may need to manually refresh it to see yours. 
+Identifying sample data is easy : 
+- there is a single licensed user
+- his GUID starts with "aaaaaaa"
+
+Here is the screen with Sample Data
+
+![PBI Sample Data](/Docs/Images/Install-PBI-Sample.png)
+
+
+
+
