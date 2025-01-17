@@ -14,7 +14,7 @@ In this article :
 
 ## Import Solution
 
-[Download the latest version](/Packages/RequestAnalyzer_2_0_0_2_managed.zip) of the solution, and import it in the chosen host environment.
+[Download the latest version](/Packages/RequestAnalyzer_2_1_0_0_managed.zip) of the solution, and import it in the chosen host environment.
 
 ![Install-ImportSolution](/Docs/Images/Install-ImportSolution.png)
 
@@ -71,7 +71,10 @@ This tool uses CoE Starter Kit data to provide details about a specific user. As
 
 ## Data collection
 All these parameters have default values that should fit most tenants. 
-You may want to see how to adjust them if :
+
+If you have installed a V1.x version of this tool, you need to check the variable *RA-CollectAllDaysAtNextRun* is set to **False / No**
+
+Otherwise, you may want to see how to adjust them if :
 - you have a very large tenant (>100k active users) as the size brings challenges to collect efficiently the data.
 - you want to optimize data collection for your tenant size. (can reduce run time and get latest data earlier)
 - you are curious and want to understand how this works
